@@ -10,6 +10,7 @@ module "bastion" {
   bastion_ami = "ami-a4c7edb2"
   bastion_subnet_ids           = ["subnet-7beca033", "subnet-809e0aac"]
   bastion_security_groups      = ["sg-df68f9af"]
+  team_name = "wham"
 }
 
 data "aws_availability_zones" "available" {}
