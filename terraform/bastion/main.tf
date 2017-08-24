@@ -11,9 +11,15 @@ module "bastion" {
   bastion_subnet_ids           = ["subnet-7beca033", "subnet-809e0aac"]
   bastion_security_groups      = ["sg-df68f9af"]
   team_name = "wham"
+  keys_file = "${data.template_file.authorized_keys.rendered}"
+
 }
 
 data "aws_availability_zones" "available" {}
+
+data "template_file" "authorized_keys" {
+  template = "${file("${path.root}/authorized_keys")}"
+}
 
 terraform {
   backend "s3" {
